@@ -18,4 +18,4 @@ jobs:
       - name: Build Maven
         run: ./mvnw clean package -DskipTests
       - name: Build image Docker
-          run: /usr/bin/docker build -t quarkus-kafka-producer:${{ github.sha }} .
+        run: /usr/bin/docker build -t quarkus-kafka-producer:${{ github.sha }} .
