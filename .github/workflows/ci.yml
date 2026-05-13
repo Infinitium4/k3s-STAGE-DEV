@@ -10,12 +10,15 @@ jobs:
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
+
       - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
+
       - name: Build Maven
         run: ./mvnw clean package -DskipTests
+
       - name: Build image Docker
-        run: /usr/bin/docker build -t quarkus-kafka-producer:${{ github.sha }} -f src/main/docker/Dockerfile .
+        run: sudo /usr/bin/docker build -t quarkus-kafka-producer:${{ github.sha }} -f src/main/docker/Dockerfile .
